@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            font-family: Arial;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            width: 300px;
+        }
+        input[type=email], input[type=password] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #6a11cb;
+            border: none;
+            color: white;
+            border-radius: 5px;
+        }
+        .link {
+            margin-top: 15px;
+            text-align: center;
+        }
+        .flash {
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form method="POST" class="container">
+        <h2>Login</h2>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="flash">{{ messages[0] }}</div>
+          {% endif %}
+        {% endwith %}
+        <input type="email" name="email" placeholder="Enter Gmail" required>
+        <input type="password" name="password" placeholder="Enter Password" required>
+        <button type="submit">Login</button>
+        <div class="link">
+            <a href="/signup">Don't have an account? Sign up</a>
+        </div>
+    </form>
+</body>
+</html>

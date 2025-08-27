@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Prediction Result</title>
+   <style>
+      body {
+         background-color: #F0F4F8;
+         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+         padding: 30px;
+         color: #333;
+      }
+
+      .result-container {
+         background-color: #ffffff;
+         padding: 30px;
+         border-radius: 12px;
+         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+         max-width: 700px;
+         margin: auto;
+         text-align: center;
+      }
+
+      .result-message {
+         font-size: 1.4rem;
+         color: #1a1a1a;
+         margin-bottom: 30px;
+      }
+
+      .healthy-table {
+         width: 100%;
+         border-collapse: collapse;
+         margin-top: 20px;
+      }
+
+      .healthy-table th, .healthy-table td {
+         border: 1px solid #ccc;
+         padding: 12px;
+         text-align: left;
+      }
+
+      .healthy-table th {
+         background-color: #80ced6;
+         color: #fff;
+      }
+
+      .healthy-table tr:nth-child(even) {
+         background-color: #f9f9f9;
+      }
+
+      h2 {
+         color: #333;
+         margin-top: 40px;
+      }
+
+      .back-button {
+         margin-top: 40px;
+      }
+
+      .back-button a {
+         text-decoration: none;
+      }
+
+      .back-button button {
+         padding: 12px 24px;
+         font-size: 16px;
+         background-color: #80ced6;
+         color: #fff;
+         border: none;
+         border-radius: 30px;
+         cursor: pointer;
+         font-weight: bold;
+         transition: background-color 0.3s ease;
+      }
+
+      .back-button button:hover {
+         background-color: #5aaeb8;
+      }
+   </style>
+</head>
+<body>
+   <div class="result-container">
+      <h1 class="result-message">{{ prediction_text }}</h1>
+
+      <h2>🩺 Ideal Health Parameters (Middle-aged Male)</h2>
+      <table class="healthy-table">
+         <tr>
+            <th>Parameter</th>
+            <th>Ideal Range</th>
+         </tr>
+         <tr>
+            <td>Total Bilirubin</td>
+            <td>0.1 – 1.2 mg/dL</td>
+         </tr>
+         <tr>
+            <td>Direct Bilirubin</td>
+            <td>0.0 – 0.3 mg/dL</td>
+         </tr>
+         <tr>
+            <td>Alkaline Phosphotase</td>
+            <td>44 – 147 IU/L</td>
+         </tr>
+         <tr>
+            <td>Alamine Aminotransferase (ALT)</td>
+            <td>7 – 56 U/L</td>
+         </tr>
+         <tr>
+            <td>Total Proteins</td>
+            <td>6.3 – 7.9 g/dL</td>
+         </tr>
+         <tr>
+            <td>Albumin</td>
+            <td>3.4 – 5.4 g/dL</td>
+         </tr>
+         <tr>
+            <td>Albumin and Globulin Ratio</td>
+            <td>1.0 – 2.1</td>
+         </tr>
+      </table>
+
+      <div class="back-button">
+         <a href="{{ url_for('home') }}">
+            <button>⬅️ Back to Home</button>
+         </a>
+      </div>
+   </div>
+</body>
+</html>

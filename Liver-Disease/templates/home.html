@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LiverGuard AI - Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            min-height: 100vh;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 50px;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .website-name {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .nav-buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-left: 15px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            background-color: #ffffff;
+            color: #0072ff;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .nav-buttons button:hover {
+            background-color: #d1ecff;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .main-text {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .test-button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #fff;
+            color: #0072ff;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .test-button:hover {
+            background-color: #e0f0ff;
+        }
+
+        footer {
+            padding: 15px 50px;
+            font-size: 14px;
+            background-color: rgba(0, 0, 0, 0.1);
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="website-name">LiverGuard AI</div>
+        <div class="nav-buttons">
+            {% if not logged_in %}
+                <a href="{{ url_for('login') }}"><button>Login</button></a>
+                <a href="{{ url_for('signup') }}"><button>Signup</button></a>
+            {% else %}
+                <a href="{{ url_for('logout') }}"><button>Logout</button></a>
+            {% endif %}
+        </div>
+    </header>
+
+    <main>
+        <div class="main-text">
+            Do you want to check your odds of getting liver disease?
+        </div>
+        {% if logged_in %}
+            <a href="{{ url_for('liver') }}"><button class="test-button">Take the Liver Test</button></a>
+        {% else %}
+            <p>Please login or signup to start the test.</p>
+        {% endif %}
+    </main>
+
+    {% if logged_in %}
+    <footer>
+        Hello, {{ session['user'] }}
+    </footer>
+    {% endif %}
+</body>
+</html>
